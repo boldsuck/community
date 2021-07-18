@@ -8,7 +8,7 @@ _template: layout.html
 ---
 title: Becoming a Tor translator
 ---
-subtitle: Our localization efforts happen in the Localization Lab Hub on Transifex, a third-party translation platform. Learn how to sign up and begin contributing.
+subtitle: Learn how to sign up and begin contributing.
 ---
 key: 1
 ---
@@ -20,7 +20,7 @@ Thank you for your interest in helping us with translations.
 # Localization mailing list
 <a name="tor-l10n" />
 
-To communicate with other translators, please join the [Tor localization mailing list](https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-l10n), where we organize translations, take decisions, report errors in source strings, etc. Please introduce yourself and ask any questions you may have after following up this instructions.
+To communicate with other translators, please join the [Tor localization mailing list](https://lists.torproject.org/cgi-bin/mailman/listinfo/tor-l10n), where we organize translations, take decisions, report errors in source strings, etc. Please introduce yourself and ask any questions you may have after following up these instructions.
 
 # Translation platform
 
@@ -39,16 +39,22 @@ In order to begin contributing you will have to sign up with Transifex. Here's a
 1. On the next page, select the languages you speak from the drop-down menu and continue.
 1. You are now signed up! Go to the [Tor Transifex page](https://www.transifex.com/otf/torproject/).
 1. Click the blue 'Join Team' button on the far right:
-![Join Team](/static/images/localization/tr3.png)
+<img style="display:block" src="/static/images/localization/tr3.png" alt="Join Team">
 1. Select the language you would like to translate from the dropdown menu:
-![Choose Language](/static/images/localization/tr4.png)
+<img style="display:block" src="/static/images/localization/tr4.png" alt="Choose Language">
 1. A notification will now show up on the top of the page like so:
-![Request Submitted](/static/images/localization/tr5.png)
+<img style="display:block" src="/static/images/localization/tr5.png" alt="Request Submitted">
+1. Before translating, please read through the Tor Project page on the [Localization Lab Wiki](https://wiki.localizationlab.org/index.php/Tor).
+1. Please consult the Tor L10n wikipages for [translators](https://gitlab.torproject.org/tpo/community/l10n/-/wikis/Localization-for-translators) and [reviewers](https://gitlab.torproject.org/tpo/community/l10n/-/wikis/Localization-for-reviewers).
+   The page includes guidelines, resources, and priorities that will help you make the most out of your contribution.
 
-Before translating, please read through the Tor Project page on the [Localization Lab Wiki](https://wiki.localizationlab.org/index.php/Tor). The page includes guidelines, resources, and priorities that will help you make the most out of your contribution.
 After your membership is approved, you're ready to begin.
 
 #IRC channel
 
 We hang out in the #tor-l10n channel on the oftc IRC network.
 Please [join us to talk about localization](https://support.torproject.org/get-in-touch/#irc-help) (l10n)!
+
+# [Tor Monthly Localization Hangouts](https://gitlab.torproject.org/tpo/community/l10n/-/wikis/Monthly-Tor-Localization-Hangouts)
+
+We meet on our irc channel every 3rd Friday of the month. Come over to hang out with other translators, ask questions, or simply translate together.

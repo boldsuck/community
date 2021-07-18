@@ -1,19 +1,18 @@
 # Community portal
 
-This is the repository of Community portal. The current online version of this portal can be found at https://community.torproject.org or [Community Onion Service](http://3gldbgtv5e4god56.onion/).
+This is the repository of Community portal. The current online version of this portal can be found at https://community.torproject.org or [Community Onion Service](http://xmrhfasfg5suueegrnc4gsgyi2tyclcy5oz7f5drnrodmdtob6t2ioyd.onion/).
 
 To clone the code use either of 
 
 ```git clone https://git.torproject.org/project/web/community.git/```
 
-```torify git clone http://dccbbv6cooddgcrq.onion/project/web/community.git/``` 
+```torify git clone http://xtlfhaspqtkeeqxk6umggfbr3gyfznvf4jhrge2fujz53433i2fcs3id.onion/project/web/community.git/``` 
 
-or browse it [online](http://gitweb.torproject.org/project/web/community.git).
+or browse it [online](http://gzgme7ov25seqjbphab4fkcph3jkobfwwpivt5kzbv3kqx2y2qttl4yd.onion/project/web/community).
 
 ## How to report bugs or feedback 
 
-First check if your issue wasn't already opened in [gitlab.torproject.org](https://gitlab.torproject.org/web/community/issues), then file a [trac ticket](https://trac.torproject.org/projects/tor/newticket) and choose the component: Webpages/Community. 
-
+First, check if the bug is already known. You can search and read all the issues at https://gitlab.torproject.org/. To create a new issue, please [request a new account](https://gitlab.onionize.space/) to access Tor Project's GitLab instance and [find the right repository](https://gitlab.torproject.org/tpo) to report your issue. Issues related to our websites should be filed under the [Web issue tracker](https://gitlab.torproject.org/groups/tpo/web/-/issues).
 
 ## What is Lektor
 
@@ -41,7 +40,7 @@ You can click ```Edit this page``` and submit your content changes in a [Pull Re
 
 ```$ cd community/lego && git submodule update --init --recursive```
 
-5. Translations for the website are imported by Jenkins when bulding the page, but if you want to test them, download the correct branch of the translations repo to the ./i18n/ folder.
+5. Translations for the website are imported by Jenkins when building the page, but if you want to test them, download the correct branch of the translations repo to the ./i18n/ folder.
 
 6. Finally:
 
@@ -75,7 +74,7 @@ This is the workflow that Tor Internal people should use when making changes on 
     - Contents file, containing your changes where it would be located on the **reviewer's repo**, e.g. `https://gitlab.torproject.org/steph/community/blob/develop/content/onion-services/contents.lr`.
     - For the review workflow, please see (Reviewer Workflow).
 5. Once the work has been reviewed and any necessary changes and merge request has been made, a repo maintainer or team members with write access to gitweb master will then merge or cherry-pick these changes to master, following the workflow outlined in [How to use our git flow](https://gitlab.torproject.org/web/tpo/wikis/Git-flow-and-merge-requests#how-to-use-our-git-flow).
-6. Merger should then move the the ticket to the `Closed` column.
+6. Merger should then move the ticket to the `Closed` column.
 
 ### Reviewer Workflow
 
