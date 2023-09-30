@@ -8,7 +8,7 @@ body:
 
 ### 1. Enable Automatic Software Updates
 
-One of the most important things to keeps your relay secure is to install security updates timely and ideally automatically so you can not forget about it.
+One of the most important things to keep your relay secure is to install security updates timely and ideally automatically so you can not forget about it.
 Follow the instructions to enable [automatic software updates](updates) for your operating system.
 
 ### 2. Configure Tor Project's Repository
@@ -51,12 +51,12 @@ If your relay is now running, check out the [post-install](../../post-install/) 
 ---
 html: two-columns-page.html
 ---
-key: 2
+key: 03
 ---
 section: Middle/Guard relay
 ---
 section_id: relay-operations
 ---
-subtitle: How to deploy a middle/Guard relay on Debian/Ubuntu
+subtitle: How to deploy a Middle/Guard relay on Debian/Ubuntu
 ---
 _discoverable: yes

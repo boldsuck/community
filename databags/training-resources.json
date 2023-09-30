@@ -3,10 +3,10 @@
     {
         "label" : "All About Tor",
         "name" : "all-about-tor",
-        "filename" : "all-about-tor-full-pack",
+        "filename" : "All_About_Tor",
         "formats" : ["odp","pdf"],
         "description" : "Full set of slides for Tor Trainings",
-        "date" : "2021"
+        "date" : "2023"
     },
 
     "todo sobre tor" :
@@ -37,6 +37,16 @@
         "formats" : ["odp","pdf"],
         "description" : "Learn how to run a private unlisted Tor bridge",
         "date" : "2021"
+    },
+
+    "Introduction to Onion Services" :
+    {
+        "label" : "Brief introduction to Tor and Onion Services",
+        "name" : "onion-services",
+        "filename" : "intro-onion-service-2022",
+        "formats" : ["odp","pdf"],
+        "description" : "Learn about onion services and their benefits",
+        "date" : "2022"
     },
 
     "helping survivors" :

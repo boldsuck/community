@@ -4,11 +4,14 @@ color: primary
 ---
 title: FreeBSD
 ---
+subtitle: How to deploy a Middle/Guard relay on FreeBSD
+---
 body:
 
 ### 1. Enable Automatic Software Updates
 
-One of the most important things to keeps your relay secure is to install security updates timely and ideally automatically so you can not forget about it. Follow the instructions to enable [automatic software updates](updates) for your operating system.
+One of the most important things to keep your relay secure is to install security updates timely and ideally automatically so you can not forget about it.
+Follow the instructions to enable [automatic software updates](updates) for your operating system.
 
 ### 2. Bootstrap `pkg`
 
@@ -112,7 +115,7 @@ If your relay is now running, check out the [post-install](../../post-install/) 
 ---
 html: two-columns-page.html
 ---
-key: 5
+key: 06
 ---
 section: Middle/Guard relay
 ---

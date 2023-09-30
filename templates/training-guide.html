@@ -1,0 +1,88 @@
+{% set sidenav_items = this.parent.parent.children %}
+{% set resource_name = this.resource_name or this._path.split('/')[-1][:-('-guide'|length)] %}
+{% set resource = bag('community-training-materials', resource_name) %}
+<style>
+ #sample-slides td:not(:first-child) {
+   padding-right: 0;
+ }
+</style>
+<div class="row pt-5">
+  {% include 'sidenav.html' %}
+  <div class="col-sm-12 col-xs-12  ml-sm-auto col-md-9 col-lg-9 {{ bag('alternatives', this.alt, 'order') }}" id="training-guide-content">
+    <div class="row col">
+      <h1 class="font-weight-600">{{ resource['name'] }}</h1>
+    </div>
+    <div class="row col resource-table my-5">
+      <span class="text-muted font-size-1-1-rem font-weight-600 col-6 col-lg-2 pl-0 pb-3 border-bottom">{{ _('Maintained by') }}</span>
+      <span class="font-size-1-1-rem font-weight-600 col-6 col-lg-2 pb-3 border-bottom">{{ resource['author'] }}</span>
+      <div class="w-100"></div>
+      <span class="text-muted font-size-1-1-rem font-weight-600 col-6 col-lg-2 pl-0 py-3 border-bottom">{{ _('Last updated') }}</span>
+      <span class="font-size-1-1-rem font-weight-600 col-6 col-lg-2 py-3 border-bottom">{{ resource['date'] }}</span>
+      <div class="w-100"></div>
+      <span class="text-muted font-size-1-1-rem font-weight-600 col-6 col-lg-2 pl-0 pt-3">{{ _('Estimated time') }}</span>
+      <span class="font-size-1-1-rem font-weight-600 col-6 col-lg-2 pt-3">{{ this.estimated_time or 'FIXME: NO TIME ESTIMATE' }}</span>
+    </div>
+    <p class="mb-5">{{ resource['description'] }}</p>
+    {% if this.objectives %}
+      <div class="mb-5">
+        <h4 class="font-weight-600">{{ _('Objectives') }}</h4>
+        <ul>
+          {% for objective in this.objectives %}
+          <li>{{ objective }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+      {% if this.external_sources %}
+      <div class="mb-5">
+        <h4 class="font-weight-600">{{ _('External reading sources') }}</h4>
+        <ul>
+          {% for external_source in this.external_sources %}
+          <li>{{ external_source }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+      {% if this.sample_slides %}
+      <h4 class="mb-5 font-weight-600">{{ _('Download sample slides') }}</h4>
+      <div class="resource-table mb-5">
+        {% for slide in this.sample_slides.blocks %}
+          <div class="row">
+            <div class="col-2 col-lg-1"><p class="text-muted m-0">{{ slide.language }}</span></div>
+            {% if slide.view_link or slide.pdf_link or slide.odp_link %}
+              <div class="col-auto">
+                {% if slide.view_link %}
+                  <a href="{{ slide.view_link }}"><button type="button" class="btn btn-sm btn-primary font-weight-600 h5 m-0">View</button></a>
+                {% endif %}
+                {% if slide.pdf_link %}
+                  <button type="button" class="btn btn-sm btn-outline-primary font-weight-600 h5 m-0">PDF</button>
+                {% endif %}
+                {% if slide.odp_link %}
+                  <button type="button" class="btn btn-sm btn-outline-primary font-weight-600 h5 m-0">ODP</button>
+                {% endif %}
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+      {% if this.topics %}
+      <div class="mb-5">
+        <h4 class="font-weight-600">{{ _('Topics') }}</h4>
+        <p>
+          {% for topic in this.topics %}
+          <span>{{ topic }}</span>
+          {%- if loop.index != this.topics|length -%}
+          {{ ', ' }}
+          {% endif %}
+          {% endfor %}
+        </p>
+      </div>
+      {% endif %}
+      <hr class="mb-5 mt-0">
+      <h2 class="text-primary">{{ _('Join the Conversation') }}</h2>
+      <p>{{ _('Do you have ideas on how to improve our training material and educational outreach? Join the conversation on the Tor Project forum. Simply create a post under the “Education” category!') }}</p>
+  </div>
+  <div class="d-flex my-4">
+  </div>
+</div>

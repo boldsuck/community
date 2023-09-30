@@ -1,1 +1,22 @@
-{{ this.name }}
+{% extends 'layout.html' %}
+
+{# recursively generate the pathbar segments for a given page #}
+{% macro pathbar_segments(page) -%}
+  {% set current_page = page == this %}
+  {%- if page.parent -%}
+  {{ pathbar_segments(page.parent) }}
+  {% endif %}
+  <li class="d-inline">
+    {% if not current_page %}
+      <a href="{{ page|url }}" title="page.title">{{ page.title }}</a>
+    {% else %}
+      {{ page.title }}
+    {% endif %}
+  </li>
+{% endmacro %}
+
+{% block pathbar %}
+<div style="" class="py-3 pl-4" id="pathbar">
+  <ul class="m-0 pl-3">{{ pathbar_segments(this.record) }}</ul>
+</div>
+{% endblock %}

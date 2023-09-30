@@ -9,7 +9,7 @@ body:
 # Before You Start
 
 The best way to handle abuse complaints is to set up your exit node so that they are less likely to be sent in the first place.
-Please see [Tips for Running an Exit Node with Minimal Harassment](https://blog.torproject.org/running-exit-node) and [Tor Exit Guidelines](/relay/community-resources/tor-exit-guidelines/) for more info, before reading this document.
+Please see [Tips for Running an Exit Node with Minimal Harassment](https://blog.torproject.org/tips-running-exit-node) and [Tor Exit Guidelines](/relay/community-resources/tor-exit-guidelines/) for more info, before reading this document.
 
 Below are a collection of letters you can use to respond to your ISP about their complaint in regards to your Tor exit server.
 
@@ -30,16 +30,18 @@ All templates should include the Common Boilerplate below, and append some addit
 
 ```
 The IP address in question is a Tor exit node.
-https://www.torproject.org/overview.html
+https://2019.www.torproject.org/about/overview.html.en
 
-There is little we can do to trace this matter further. As can be seen from the overview page, the Tor network is designed to make tracing of users impossible. The Tor network is run by some 5000 volunteers who use the free software provided by the Tor Project to run Tor routers.
+There is little we can do to trace this matter further.
+As can be seen from the overview page, the Tor network is designed to make tracing of users impossible.
+The Tor network is run by some 5000 volunteers who use the free software provided by the Tor Project to run Tor routers.
 Client connections are routed through multiple relays, and are multiplexed together on the connections between relays.
 The system does not record logs of client connections or previous hops.
 
 This is because the Tor network is a censorship resistance, privacy, and anonymity system used by whistle blowers, journalists, Chinese dissidents skirting the Great Firewall, abuse victims, stalker targets, the US military, and law enforcement, just to name a few.
 See https://www.torproject.org/about/torusers.html.en for more info.
 
-Unfortunately, some people misuse the network. However, compared to the rate of legitimate use (the IP range in question processes nearly a gigabit of traffic per second), [abuse complaints are rare](https://www.torproject.org/docs/faq-abuse.html.en).
+Unfortunately, some people misuse the network. However, compared to the rate of legitimate use (the IP range in question processes nearly a gigabit of traffic per second), [abuse complaints are rare](https://support.torproject.org/abuse/).
 ```
 
 ## Abuse Scenarios
@@ -53,7 +55,7 @@ The common boilerplate should be abridged or be omitted if the abuse complainant
 This does not mean that nothing can be done, however.
 
 The Tor Project provides an automated DNSRBL for you to query to flag posts coming from Tor nodes as requiring special review.
-You can also use this DNSRBL to only allow Tor IPs to read but not post comments. https://www.torproject.org/projects/tordnsel.html.en
+You can also use this DNSRBL to only allow Tor IPs to read but not post comments: https://www.torproject.org/projects/tordnsel.html.en
 
 However, be aware that this may be just one jerk amongst many legitimate Tor users who use your forums.
 You might have luck getting rid of this jerk by temporarily limiting account creation to require Gmail accounts before posting, or by requiring account creation be done over non-Tor before posting.
@@ -145,7 +147,7 @@ However, we still recommend using the general approach, as the attack will likel
 ```
 With respect to your account, given that the attacker used Tor and not a large botnet (or your machine's IP itself), it is likely that your password was either harvested off of your machine from a keylogger, or it was captured via a kiosk, or from open wireless.
 
-Our recommendation is to treat this event as though there was a login from an open wireless access point in your city. Reset your password, and if you don't have antivirus already, download the free AVG: http://free.avg.com/us-en/download, Spybot SD: http://www.safer-networking.org/nl/home/index.html, and/or AdAware: http://www.lavasoft.com/?domain=lavasoftusa.com.
+Our recommendation is to treat this event as though there was a login from an open wireless access point in your city. Reset your password, and if you don't have antivirus already, download the free AVG: http://free.avg.com/us-en/download, Spybot SD: https://www.safer-networking.org/, and/or AdAware: http://www.lavasoft.com/?domain=lavasoftusa.com.
 Use these to scan to check for keyloggers or spyware that someone with access to your computer may have installed.
 
 To help protect yourself while using open wireless, consider using this Firefox plugin: <https://www.eff.org/https-everywhere/> and encourage the site maintainer to support HTTPS logins.
@@ -201,9 +203,9 @@ It has also been reviewed by someone who works in Abuse at a major ISP.
   * Your server is not a trojan/zombie.
   * You are a competent server administrator and can address the issue. Minimally, you can at least discuss and respond to the issue intelligently.
   * The ISP is not at fault and not liable for your actions. This is normally the case, but the poor abuse person dealing with the issues just wants to hear it isn't the ISPs problem. They will move on after they are comfortable.
- * Discuss options. Options Phobos has been offered:
-  * The ISP/Complainant may very well demand to see logfiles. Fortunately, by default, nothing sensitive disclosed. You may want a new ISP if they demand access to log files ad hoc.
-  * The ISP/Complainant suggests you convert to middleman. In this case, you may want to counter with a reduced exit policy, such as the one suggested in [item #6 of the above blog post](https://blog.torproject.org/running-exit-node).
+ * Discuss options. Options that have been offered to relay operators:
+  * The ISP/Complainant may very well demand to see logfiles. Fortunately, by default, nothing sensitive is disclosed. You may want a new ISP if they demand access to log files ad hoc.
+  * The ISP/Complainant may suggest you convert to a non-exit node. In this case, you may want to counter with a reduced exit policy, such as the one suggested in [item #6 of the above blog post](https://blog.torproject.org/tips-running-exit-node).
   * The ISP/Complainant demands you disable Tor. You may want a new ISP as a result.
   * The ISP/Complainant states they will firewall off the traffic on the default ports. You may want a new ISP as a result.
   * Update the config to disallow traffic to a certain IP range from your exit node. You may want to suggest the complainant use the [Tor DNS RBL](https://2019.www.torproject.org/projects/tordnsel.html.en) instead.

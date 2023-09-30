@@ -6,7 +6,7 @@ body:
 
 #1. Make sure relay ports can be reached
 
-If you are using a firewall, open a hole in your firewall so incoming connections can reach the ports you will use for your relay (ORPort, plus DirPort if you enabled it).
+If you are using a firewall, open a hole in your firewall so incoming connections can reach the ports you will use for your relay (ORPort).
 
 Also, make sure you allow all outgoing connections too, so your relay can reach the other Tor relays, clients and destinations.
 
@@ -21,12 +21,12 @@ Self-testing indicates your ORPort is reachable from the outside. Excellent.
 Publishing server descriptor.
 ```
 
-About 3 hours after you start your relay it should appear on [Relay Search](https://metrics.torproject.org/rs.html).
+About 3 hours after you start your relay, it should appear on [Relay Search](https://metrics.torproject.org/rs.html) on the Metrics portal.
 You can search for your relay using your nickname or IP address.
 
 # 3. Read about Tor relay lifecycle
 
-It takes some time for relay traffic to ramp up, this is especially true for guard relays but to a lesser extend also for exit relays. To understand this process, read about the [lifecycle of a new relay](https://blog.torproject.org/lifecycle-new-relay).
+It takes some time for relay traffic to ramp up, this is especially true for guard relays but to a lesser extent also for exit relays. To understand this process, read about the [lifecycle of a new relay](https://blog.torproject.org/lifecycle-new-relay).
 
 # 4. Configuration Management
 
@@ -78,7 +78,7 @@ Before enabling your tor daemon to use IPv6 in addition to IPv4 you should do so
 The following command line will ping the IPv6 addresses of Tor directory authorities from your server:
 
 ```
-ping6 -c2 2001:858:2:2:aabb:0:563b:1526 && ping6 -c2 2620:13:4000:6000::1000:118 && ping6 -c2 2001:67c:289c::9 && ping6 -c2 2001:678:558:1000::244 && ping6 -c2 2607:8500:154::3 && ping6 -c2 2001:638:a000:4140::ffff:189 && echo OK.
+ping6 -c2 2001:858:2:2:aabb:0:563b:1526 && ping6 -c2 2620:13:4000:6000::1000:118 && ping6 -c2 2001:67c:289c::9 && ping6 -c2 2001:678:558:1000::244 && ping6 -c2 2001:638:a000:4140::ffff:189 && echo OK.
 ```
 
 At the end of the output you should see "OK." if that is not the case, do not enable IPv6 in your torrc configuration file before IPv6 is indeed working.
@@ -115,6 +115,7 @@ IPv6Exit 1
 After your initial installation and start of the tor daemon it is a good idea to make a backup of your relay's long term identity keys.
 They are located in the "keys" subfolder of your DataDirectory (simply make a copy of the entire folder and store it in a secure location).
 Since relays have a ramp-up time it makes sense to back up the identity key to be able to restore your relay's reputation after a disk failure - otherwise you would have to go through the ramp-up phase again.
+Only do this if you have a very secure place for your keys as if stolen, these keys could theoretically allow traffic decryption or impersonation. 
 
 Default locations of the keys folder:
 

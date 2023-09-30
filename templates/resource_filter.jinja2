@@ -1,0 +1,90 @@
+{# filter widget for the training page resources list #}
+
+{# asset files don't get rendered from jinja, so we'll pass some translated strings here #}
+<script
+  src="{{ '/js/resources_page.js'|asseturl }}"
+  defer
+  topic="{{ _('Topic') }}"
+  topic-colon="{{ _('Topic:') }}"
+  lang="{{ _('Language') }}"
+  lang-colon="{{ _('Language:') }}"
+  author="{{ _('Maintained by') }}"
+  author-colon="{{ _('Maintained by:') }}"
+></script>
+
+<div class="js-filter-dropdowns d-flex justify-content-end gap-10px">
+  <div class="dropdown">
+  <button class="btn btn-md btn-outline-primary dropdown-toggle font-weight-600 dropdown-rounded" type="button" id="topicDropdownMenuButton" data-current-value="{{ slugify(this.current_topic or '') }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      {# we need to strip whitespace here, or it visibly renders inside the button text #}
+      {%- if this.current_topic %}
+        {{- _('Topic:') + ' ' + this.current_topic }}
+      {%- else %}
+        {{- _('Topic') }}
+      {%- endif -%}
+    </button>
+    <div class="dropdown-menu pl-2" aria-labelledby="topicDropdownMenuButton">
+      <a class="d-block onclick-setTopic" data-topic="none" href="{{ get_new_link(this, new_topic='none') }}">{{ _('(None)') }}</a>
+      {% if this == site.get('/training/resources') %}
+        {% set sortby_resources = bag('community-training-materials') %}
+      {% elif this == site.get('/training/digital-security-guides') %}
+        {% set sortby_resources = bag('digital-security-guides') %}
+      {% else %}
+        {% set sortby_resources = this.sortby_resources %}
+      {% endif %}
+      {% for topic in get_resource_topics(sortby_resources)|sort(case_sensitive=False) if topic != 'none' %}
+        <a
+          class="d-block onclick-setTopic"
+          data-topic="{{ slugify(topic) }}"
+          href="{{ get_new_link(this, new_topic=slugify(topic)) }}"
+        >
+          {{- topic -}}
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="dropdown">
+    <button class="btn btn-md btn-outline-primary dropdown-toggle font-weight-600 dropdown-rounded" type="button" id="languageDropdownMenuButton" data-current-value="{{ this.current_lang_code }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      {%- if this.current_lang %}
+        {{- _('Language:') +  ' ' + this.current_lang }}
+      {%- else %}
+        {{- _('Language') }}
+      {%- endif -%}
+    </button>
+    <div class="dropdown-menu pl-2" aria-labelledby="languageDropdownMenuButton">
+      <a class="d-block onclick-setLang" data-lang="none" href="{{ get_new_link(this, new_lang='none') }}">{{ _('(None)') }}</a>
+      {% for language_code, language_name in get_resource_langs(sortby_resources)|sort(attribute='1', case_sensitive=False) if language_code != 'none' %}
+        <a
+          class="d-block onclick-setLang"
+          data-lang="{{ language_code }}"
+          href="{{ get_new_link(this, new_lang=language_code) }}"
+        >
+          {{- language_name -}}
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="dropdown">
+    <button class="btn btn-md btn-outline-primary dropdown-toggle font-weight-600 dropdown-rounded" type="button" id="authorDropdownMenuButton" data-current-value="{{ slugify(this.current_author or '') }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      {%- if this.current_author %}
+        {{- _('Maintained by:')  + ' ' + this.current_author }}
+      {%- else %}
+        {{- _('Maintained by')}}
+      {%- endif -%}
+    </button>
+    <div class="dropdown-menu pl-2" aria-labelledby="authorDropdownMenuButton">
+      <a class="d-block onclick-setAuthor" data-author="none" href="{{ get_new_link(this, new_author='none') }}">{{ _('(None)') }}</a>
+      {% for author in get_authors(sortby_resources)|sort(case_sensitive=False) if author != 'none' %}
+        <a
+          class="d-block onclick-setAuthor"
+          data-author="{{ slugify(author) }}"
+          href="{{ get_new_link(this, new_author=author) }}"
+        >
+          {{- author -}}
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+  <div>
+  <a href="{{ get_new_link(this, new_topic='none', new_lang='none', new_author='none') }}" id="filterClearButton" class="btn btn-primary font-weight-600">{{ _('Clear filters') }}</a>
+  </div>
+</div>

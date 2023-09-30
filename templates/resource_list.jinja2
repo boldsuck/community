@@ -1,0 +1,134 @@
+{# resource list widget for the community training page #}
+
+{#
+  Args:
+    resource_dict: a dictionary mapping a resource name to a resource
+    visible_resource_list: resources will be rendered (but not displayed) unless the resource's key is in this list
+    this: `this`
+    training_guide_this: the `this` to use for resolving training guides. defaults to `this`
+#}
+{% macro resource_list(resource_dict, visible_resource_list, this, training_guide_this) %}
+  {% set training_guide_this = training_guide_this or this %}
+  {% include 'resource_filter.jinja2' %}
+  <div id="resource-list">
+    {% if not resource_dict %}
+      {# TODO: change this placeholder text #}
+      <h1>We couldn't find any resources that fit those criteria :(</h1>
+    {% endif %}
+    {% for resource_name, resource in resource_dict.items() %}
+      <div
+        class="border container-fluid p-3 px-0 my-3 resource-list-entry {% if resource_name not in visible_resource_list %}d-none{% endif %}"
+        data-topics=":{% for topic in resource['topics']%}{{ slugify(topic) }}:{% endfor %}"
+        data-langs=":{% for lang in resource['languages']%}{{ lang }}:{% endfor %}"
+        data-author="{{ slugify(resource['author']) }}"
+      >
+        {# couldn't get the desktop and mobile layouts to coexist, so each card has two layouts at different breakpoints #}
+        {# this is the desktop layout, at `large` breakpoint #}
+        <div class="row d-none d-lg-flex">
+          <a href="{{ resource['link'] }}" class="d-block col-sm-3">
+            <img src="{{ resource['cover']|url }}" class="img-fluid" alt="{{ resource['name'] }}">
+          </a>
+          <div class="col-sm pl-lg-1">
+            <div class="row">
+              <div class="col-sm row">
+                <h3 class="col-sm card-title font-weight-600 m-0 pr-0" style="max-width: fit-content">{{ resource['name'] }}</h3>
+                <div class="row gap-10px pl-3 m-0">
+                  <div class="dropdown">
+                    <a href="{{ resource['link'] }}" title="{{ resource['name'] }}" class="btn btn-md btn-primary font-weight-600 dropdown-rounded {% if resource['formats'] %}dropdown-toggle{% endif %}" type="button" id="resource-view-{{ resource_name }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      {{ _('View') }}
+                    </a>
+                    {% if resource['formats'] %}
+                      <div class="dropdown-menu pl-2" aria-labelledby="resource-view-{{ resource_name }}">
+                        <a href="{{ resource['link'] }}" title="{{ resource['name'] }}" class="d-block">
+                          {{ _('View') }}
+                        </a>
+                        {% for format_name, format_link in resource['formats'].items() %}
+                          <a href="{{ format_link }}" title="{{ resource['name'] }}" class="d-block">
+                            {{ _('View ' + format_name) }}
+                          </a>
+                        {% endfor %}
+                      </div>
+                    {% endif %}
+                  </div>
+                  <div>
+                    {% set training_guide = site.get(training_guide_this._path + '/' + resource_name + '-guide') %}
+                    {% if training_guide %}
+                      <a href="{{ training_guide|url }}" title="{{ resource['name'] }}" class="btn btn-outline-primary font-weight-600">{{ _("Trainer's guide") }}</a>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+              <div class="d-none d-md-inline col-sm-auto text-right">
+                <span class="text-muted font-weight-600 font-size-18-px">{{ _('Updated: {}').format(resource.get('date', 'not provided')) }}</span>
+              </div>
+            </div>
+            <div class="row">
+              <span class="text-primary font-weight-600 my-2 font-size-18-px col">{{ _('By {}').format(resource['author']) }}</span>
+            </div>
+            <div class="row">
+              <span class="m-0 font-size-18-px flex-grow-1 col">{{ resource['description'] }}</span>
+            </div>
+            <div class="row">
+              <span class="text-muted font-weight-600 m-0 font-size-18-px col">{{ _('Available in: {}').format(resource['languages'].values()|join(', ')) }}</span>
+            </div>
+          </div>
+        </div>
+        {# end of desktop layout #}
+        {# mobile layout #}
+        <div class="col d-lg-none px-0">
+          <a href="{{ resource['link'] }}" class="d-block pb-4">
+            <img src="{{ resource['cover']|url }}" class="img-fluid" alt="{{ resource['name'] }}">
+          </a>
+          <div class="col-sm pl-lg-1">
+            <div class="row">
+              <div class="col-sm row">
+                <h3 class="card-title font-weight-600 m-0 pr-0" style="max-width: fit-content">{{ resource['name'] }}</h3>
+                <div class="row gap-10px pl-3 m-0">
+                  <div class="dropdown">
+                    <a href="{{ resource['link'] }}" title="{{ resource['name'] }}" class="btn btn-md btn-primary font-weight-600 dropdown-rounded {% if resource['formats'] %}dropdown-toggle{% endif %}" type="button" id="resource-view-{{ resource_name }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      {{ _('View') }}
+                    </a>
+                    {% if resource['formats'] %}
+                      <div class="dropdown-menu pl-2" aria-labelledby="resource-view-{{ resource_name }}">
+                        <a href="{{ resource['link'] }}" title="{{ resource['name'] }}" class="d-block">
+                          {{ _('View') }}
+                        </a>
+                        {% for format_name, format_link in resource['formats'].items() %}
+                          <a href="{{ format_link }}" title="{{ resource['name'] }}" class="d-block">
+                            {{ _('View ' + format_name) }}
+                          </a>
+                        {% endfor %}
+                      </div>
+                    {% endif %}
+                  </div>
+                </div>
+              <div class="col-sm-6"></div>
+              </div>
+              <div class="d-none d-md-inline col-sm-auto text-right">
+                <span class="text-muted font-weight-600 font-size-18-px">{{ _('Updated: {}').format(resource.get('date', 'not provided')) }}</span>
+              </div>
+            </div>
+            <div class="row">
+              <span class="text-primary font-weight-600 my-2 font-size-18-px">{{ _('By {}').format(resource['author']) }}</span>
+            </div>
+            <div class="row">
+              <span class="m-0 font-size-18-px flex-grow-1">{{ resource['description'] }}</span>
+            </div>
+            <div class="row">
+              <span class="text-muted font-weight-600 m-0 font-size-18-px mt-2">{{ _('Available in: {}').format(resource['languages']|join(', ')) }}</span>
+            </div>
+            <div class="row">
+              <div>
+                {% set training_guide = site.get(this._path + '/' + resource_name + '-guide') %}
+                {% if training_guide %}
+                  <a href="{{ training_guide|url }}" title="{{ resource['name'] }}" class="btn btn-outline-primary font-weight-600 mt-2">{{ _("Trainer's guide") }}</a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+        {# end of mobile layout #}
+      </div>
+  	{% endfor %}
+  </div>
+{% endmacro %}

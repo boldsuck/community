@@ -1,33 +1,31 @@
+{% from 'resource_list.jinja2' import resource_list %}
+
 <div class="row pt-5">
   {% include 'sidenav.html' %}
-  <div class="col-sm-12 col-xs-12  ml-sm-auto col-md-9 col-lg-9 {{ bag('alternatives', this.alt, 'order') }}">
+  <div class="col-sm-12 col-xs-12  ml-sm-auto col-md-9 col-lg-9 pr-lg-6 {{ bag('alternatives', this.alt, 'order') }}">
     {{ this.body }}
-    <div class="row">
-
-        {% for id, item in bag('community-training-materials').items() %}
-        <div class="col-md-6 col-sm-12 col-xl-3 my-3">
-
-          <div class="card h-100">
-            <div class="card-header bg-white border-0">
-                <picture>
-                  <a href="{{ item.link }}"><img src="{{ item.cover }}" class="img-fluid" alt="{{ item.name }}"></a>
-                </picture>
-            </div>
-            <div class="card-body d-flex flex-column">
-              <h5 class="card-title human-name">{{ item.name }}</h5>
-              <p>by {{ item.author }}</p>
-              <p>In {{ item.languages }}</p>
-              <p>{{ item.description }}</p>
-              {% if item.author=='Tor Project' %}
-              	<a href="{{ item.link }}" title="{{ item.name }}" class="btn btn-primary mt-auto">Check this resource</a>
-              {% else %}
-                <a href="{{ item.link }}" title="{{ item.name }}" class="btn btn-primary mt-auto">Check this resource</a>
-              {% endif %}
-            </div>
-          </div>
+    <div class="mr-lg-4">
+      <div>
+        {% if this == site.get('/training/resources') %}
+          {{ resource_list(bag('community-training-materials'), bag('community-training-materials'), this) }}
+        {% else %}
+          {{ resource_list(bag('digital-security-guides'), bag('digital-security-guides'), this) }}
+        {% endif %}
       </div>
-      {% endfor %}
+      <hr class="my-5">
+      {{ md(_('### Community building
 
+Do you know of or have any Tor training materials (slides, guides, fanzines, videos, and other formats) that should be part of this training section?
+Please send an email to [training at torproject.org](mailto:training@torproject.org) with:
+- Title and description
+- Author and author contact information
+- Link to download or access the resource
+- Resource license (Creative Commons or similar license)
+
+Please note that we will evaluate if:
+- The material is being updated and maintained.
+- Do no harm: demystifies the "dark/deep web" and training materials that will not put people at risk.
+- Follow the Tor Project\'s [Code of Conduct](https://gitweb.torproject.org/community/policies.git/tree/code_of_conduct.txt), [Statement of Values](https://gitweb.torproject.org/community/policies.git/tree/statement_of_values.txt), and [Social Contract](https://gitweb.torproject.org/community/policies.git/tree/social_contract.txt).')) }}
     </div>
   </div>
 </div>
