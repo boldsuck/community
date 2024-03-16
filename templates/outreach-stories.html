@@ -1,0 +1,36 @@
+{% include 'breadcrumb.html' %}
+<a name="preamble" class="anchor"></a>
+<div class="row">
+  <div class="container py-3 preamble text-center">
+    {{ this.body }}
+  </div>
+</div>
+<div class="row">
+  <div class="container d-flex justify-content-center flex-wrap mb-3">
+{% for id, item in bag('story-categories').items() %}
+  <div class="p-2"><a class="btn btn-outline-primary" href="#{{ id }}">{{ _(item.title) }}</a></div>
+{% endfor %}
+  </div>
+</div>
+{% for id, item in bag('story-categories').items() %}
+<div class="row">
+  <div class="container text-center">
+    <a name="{{ id }}" class="anchor"></a>
+    <h2 class="text-primary text-center mx-auto my-3">{{ _(item.title) }}</h2>
+  </div>
+</div>
+<div class="container py-3 story-cards">
+  <div class="row flex-nowrap">
+{% for child in this.children.filter(F.category.contains(id)).all() %}
+      <div class="col mx-auto my-3">
+        <div class="card h-100 p-3">
+            <img class="story-portrait mx-auto" src="{{ child.attachments.images.get('portrait.png')|url }}" />
+            <h4 class="card-title my-3 text-center"><a href="{{ child.path|url(alt=this.alt) }}">{{ child.title }}</a></h4>
+            <div class="card-text ml-3 text-left">{% if child.summary %}<p>{{ child.summary }}</p>{% else %}{{ child.body }}{% endif %}</div>
+            <div class="card-btn mt-auto"><a class="btn btn-outline-primary mx-auto my-0 w-100" href="{{ child.path|url(alt=this.alt) }}">{{ _('View and share') }}</a></div>
+        </div>
+      </div>
+{% endfor %}
+  </div>
+</div>
+{% endfor %}

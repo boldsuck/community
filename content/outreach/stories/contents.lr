@@ -1,0 +1,23 @@
+section: Outreach
+---
+section_id: outreach
+---
+color: primary
+---
+_template: layout.html
+---
+title: User stories
+---
+subtitle: There are many reasons why people rely on Tor's privacy protections. Learn more about the real-life experiences of our diverse user base and help us spread the word.
+---
+key: 4
+---
+html: outreach-stories.html
+---
+body:
+
+This is a collection of anonymous user stories from people who rely on Tor to
+protect their privacy and anonymity. We encourage you to share their
+experiences with your network, friends and family, or as part of your work to
+promote the use of privacy-preserving technologies like ours and help us defend
+strong online protections.

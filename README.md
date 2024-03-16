@@ -28,43 +28,61 @@ You can click ```Edit this page``` and submit your content changes in a [Pull Re
 
 ### (Advanced) Compiling a local version of the website
 
-1. Download and install Lektor: https://www.getlektor.com/downloads/
-
-2. Install the lektor-i18n plugin and its [dependencies](https://github.com/numericube/lektor-i18n-plugin#prerequisites).
-
-3. Clone the repository:
-
-```git clone https://gitlab.torproject.org/tpo/web/community.git```
-
-4. Init the building blocks submodule: 
-
-```$ cd community/lego && git submodule update --init --recursive```
-
-5. Translations for the website are imported by Jenkins when building the page, but if you want to test them, download the correct branch of the translations repo to the ./i18n/ folder.
-
-6. Finally:
-
-To run a local continuous builder: ```$ lektor server```
-
-To just build the website once: ```$ lektor build -O <folder>```
-
-#### How to develop on the website
-
-Check our [wiki pages](https://gitlab.torproject.org/tpo/web/wiki/-/wikis/How-to-develop-on-the-website).
+See this guide on our wiki: https://gitlab.torproject.org/tpo/web/team/-/wikis/documentation/Compiling-a-local-version-of-the-website
 
 ### Translations
 
-To help us to translate, please join the Tor Project team in [Transifex](https://www.transifex.com/).
+To help us to translate, please join the [Tor Project team](https://hosted.weblate.org/projects/tor/) on Weblate.
 
 ### Getting help
 
 If you want to contribute to the Community portal, we will be happy to help you. Join us at #tor-www in [irc.oftc.net](https://www.oftc.net).
 
-### The community-generator plugin
+### Section-specific instructions
 
-This lektor site uses a special plugin called `community-generator`, you can find it in the `packages` directory. This plugin generates a special set of lektor contents files used for a js-free filtering system on the training resources page.
+Instructions for maintaining specific sections of the website.
 
-You shouldn't need to do anything or know anything about this plugin in order to use it. If you want to develop on this plugin, see the plugin's [README](packages/community-generator/README.md).
+#### Adding user stories
+
+User stories are located under `content/outreach/stories`.
+
+To add a new user story, add a new directory with the story's pseudonymous name. In that directory two files are required, `portrait.png` and `contents.lr` containing the story text.
+
+For the portrait, generate one manually from the [CC0](https://creativecommons.org/public-domain/cc0/) [OpenPeeps illustration library](https://www.openpeeps.com/). It should be resized to a 220px-sided square. A portrait from another story may also be re-used.
+
+For the story content, the `contents.lr` file should be formatted as follows:
+
+```
+---
+_model: story
+---
+html: outreach-story.html
+---
+section: Stories
+---
+section_id: stories
+---
+title: <title>
+---
+category:
+
+<category>
+---
+summary: <summary>
+---
+body:
+
+<body>
+```
+
+Replace the placeholders as follows:
+
+ - `<title>`: Capitalized pseudonymn for this story
+ - `category`: one or more of `activism`, `anti-censorship`, `civic-participation`, `encryption`, `freedom-of-information`, `healthcare`, `lgbtqia`, `online-safety`, `preace-of-mind`, `press-freedom`, `privacy` (as defined in `databags/story-categories.ini`), one category per line
+ - `<summary>`: text shown on the index page below the portrait (one or two short phrases)
+ - `<body>`: full story content (the first paragraph will be automatically "featured")
+
+These steps can be done directly in the GitLab Web IDE: simply create a new branch, enter the editor environment, create the directory, add/edit the needed files and finally, create and push a new commit. GitLab will then offer the option to create a merge request. Once the MR is created, a "review app" will be deployed allowing to preview the changes.
 
 #### Adding training guides for training resources
 
@@ -120,3 +138,11 @@ pdf_link: link to the pdf guide
 ----
 odp_link: link to the odp guide
 ```
+
+## Design
+
+### The community-generator plugin
+
+This lektor site uses a special plugin called `community-generator`, you can find it in the `packages` directory. This plugin generates a special set of lektor contents files used for a js-free filtering system on the training resources page.
+
+You shouldn't need to do anything or know anything about this plugin in order to use it. If you want to develop on this plugin, see the plugin's [README](packages/community-generator/README.md).

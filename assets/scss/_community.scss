@@ -100,3 +100,106 @@ div.resource-table > div.row:not(:last-child) {
         }
     }
 }
+
+/* offset anchors to account for hovering navbar */
+a.anchor {
+    display: block;
+    position: relative;
+    top: -3.5rem;
+    visibility: hidden;
+}
+
+/* style titles with pop-up anchor */
+.anchored-title a {
+    color: #000;
+}
+.anchored-title a:hover {
+    text-decoration: none;
+}
+
+.anchored-title .fa-link {
+    visibility: hidden;
+    font-size: 1rem;
+    color: #aaa;
+    vertical-align: 0.2rem;
+}
+
+.anchored-title:hover .fa-link {
+   visibility: visible;
+}
+
+/* style user stories cards */
+.story-cards {
+    .row {
+        overflow: auto;
+    }
+    .col {
+        max-width: 360px;
+    }
+    img {
+        display: block;
+    }
+    .card-title {
+        font-size: 1.8rem;
+        margin: 0.8em 0;
+    }
+    .card-text:before {
+        content: '\201C';
+        position: absolute;
+        left: 0.15em;
+        margin-top: 0.05em;
+        color: #ccc;
+        font-size: 3em;
+        line-height: 0.8em;
+	}
+    .card-text p {
+        font-size: 1.2rem;
+    }
+}
+
+/* style user story pages */
+#story-full {
+    > p:first-child {
+        font-size: 1.6rem;
+        line-height: 2.5rem;
+    }
+    > p:first-child:before {
+        content: '\201C';
+        position: absolute;
+        left: -0.25em;
+        color: #ccc;
+        font-size: 2.5em;
+        line-height: 0.6em;
+    }
+}
+
+#share-story-links {
+    a {
+        font-size: 1.1rem;
+        white-space: nowrap;
+    }
+    .fab, .fas {
+        font-size: 1.3rem;
+        padding-right: 0.5rem;
+    }
+    span {
+        display: none;
+    }
+}
+
+img.story-portrait {
+    max-width: 220px;
+}
+
+@include media-breakpoint-up(lg) {
+    #share-story-links {
+        span {
+            display: inline;
+        }
+        a {
+            width: 100% !important;
+            margin: 0 1rem;
+        }
+    }
+}
+
