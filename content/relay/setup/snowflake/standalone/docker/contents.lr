@@ -25,9 +25,9 @@ The instructions in this step are for Debian-based systems, but you can find [Do
 
 Open a terminal and run these commands:
 ```
-$ sudo apt install curl sudo
+$ sudo apt install curl
 $ curl -fsSL https://get.docker.com -o get-docker.sh
-$ sudo sh ./get-docker.sh
+$ sudo sh get-docker.sh
 ```
 
 ### 2. Download the docker compose file
@@ -64,5 +64,10 @@ $ docker logs -f 42fb82372340
 ### 4. Automatic updates with Watchtower
 
 The [docker-compose.yml](https://gitlab.torproject.org/tpo/anti-censorship/docker-snowflake-proxy/raw/main/docker-compose.yml) file contains a `watchtower` container, configured to automatically check for updates to the snowflake docker container every day, download them and run them.
-So if you are using that, your snowflake proxy will stay updated automatically!
+If you would like to use it, run the following command:
+```
+$ docker compose up -d
+```
+Now your snowflake proxy will stay updated automatically!
+
 Otherwise, you will need to periodically pull the latest container and restart it manually.

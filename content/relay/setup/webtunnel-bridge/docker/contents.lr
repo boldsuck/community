@@ -61,7 +61,9 @@ $ docker compose exec webtunnel-bridge get-bridge-line.sh
 ```
 
 You can copy and paste the bridge line in Tor Browser, and it should work.
-By default, your docker WebTunnel bridge will be distributed via [Bridges website](https://bridges.torproject.org).
+The IPv6 address you get is randomly generated and never used.
+It's just there because the pluggable transport specification requires an IP address there.
+By default, your docker WebTunnel bridge will be distributed via  [Bridges website](https://bridges.torproject.org).
 
 ---
 key: 1

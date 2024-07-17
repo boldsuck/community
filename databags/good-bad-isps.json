@@ -204,6 +204,16 @@
         "exit": "Yes",
         "comment": "VPS uses OVH AS. You can build ANY kind tor relays.",
         "last_updated": "09/27/2021"
+      },
+      {
+        "name": "Infomaniak",
+        "url": "https://www.infomaniak.com/fr",
+        "asn": "AS16276",
+        "bridge": "No",
+        "relay": "No",
+        "exit": "No",
+        "comment": "ToS forbid setting up Tor relays, including middle relays.",
+        "last_updated": "04/06/2024"
       }
     ],
     "Finland": [
@@ -432,7 +442,7 @@
       {
         "name": "delta.networks",
         "url": "https://www.delta-networks.de",
-        "asn": "AS9937",
+        "asn": "AS197071",
         "bridge": "No",
         "relay": "No",
         "exit": "No",
@@ -560,8 +570,8 @@
         "bridge": "Yes",
         "relay": "Yes",
         "exit": "Yes",
-        "comment": "They only say you should answer abuse requests in 24h. ISP has re-confirmed by e-mail that exit nodes are acceptable, with \"strict\" exit node policies.",
-        "last_updated": "2014-10-15"
+        "comment": "They only say you should answer abuse requests in 24h. ISP has re-confirmed by e-mail that exit nodes are acceptable, with \"strict\" exit node policies. 4TB included traffic, extendable.",
+        "last_updated": "05/2024"
       },
       {
         "name": "G-Core Labs",
@@ -592,8 +602,8 @@
         "bridge": "Yes",
         "relay": "Yes",
         "exit": "Yes",
-        "comment": "-",
-        "last_updated": "-"
+        "comment": "Free speech hoster. Only IPv4 AFAIK.",
+        "last_updated": "05/2024"
       },
       {
         "name": "FlokiNET",
@@ -1387,14 +1397,14 @@
     ],
     "Ukraine": [
       {
-        "name": "UrDN",
+        "name": "Ukrainian Data Network",
         "url": "https://urdn.com.ua",
         "asn": "AS207656",
         "bridge": "Yes",
         "relay": "Yes",
         "exit": "Yes",
-        "comment": "free speech hoster, allows anything but spam/scam. Abuse always forwarded.",
-        "last_updated": "10/08/2015"
+        "comment": "free speech hoster, allows anything but spam/scam. Abuse always forwarded. IPv4 & IPv6. Accepts crypto. No strict data cap, 20TB is considered reasonable",
+        "last_updated": "05/2024"
       },
       {
         "name": "Colocall",
@@ -1484,9 +1494,9 @@
         "asn": "-",
         "bridge": "Yes",
         "relay": "Yes",
-        "exit": "Yes",
-        "comment": "They are very responsive and understand the uses of Tor. They have a strict policy with abuse/spam and will not refund under their money back guarantee if abuse has been noticed. IPv4+IPv6 native support. Unmetered traffic.",
-        "last_updated": "06/2022"
+        "exit": "No",
+        "comment": "They are very responsive and understand the uses of Tor but do not allow Exit nodes. They have a strict policy with abuse/spam and will not refund under their money back guarantee if abuse has been noticed. IPv4+IPv6 native support. Unmetered traffic.",
+        "last_updated": "02/20/2024"
       }
     ],
     "US": [
@@ -1767,8 +1777,8 @@
         "bridge": "Yes",
         "relay": "Yes",
         "exit": "Yes",
-        "comment": "Exit-friendly.",
-        "last_updated": "05/01/16"
+        "comment": "Exit-friendly, Staff are responsive, Unmetered traffic",
+        "last_updated": "02/20/2024"
       },
       {
         "name": "RamNode",
@@ -1884,11 +1894,11 @@
         "name": "ChicagoVPS",
         "url": "https://chicagovps.net/",
         "asn": "AS36352",
-        "bridge": "Yes",
-        "relay": "Yes",
+        "bridge": "No",
+        "relay": "No",
         "exit": "No",
-        "comment": "Tor bridge/relay is allowed on the whole VPS range. Any VPS running Exit nodes will be suspended without prior notice.",
-        "last_updated": "15/01/15"
+        "comment": "Support says that Exit, Middle, and Bridge relays are not allowed.",
+        "last_updated": "02/20/2024"
       },
       {
         "name": "Xmission",
@@ -1979,6 +1989,16 @@
         "exit": "Yes",
         "comment": "At least with a reduced exit policy alongside blocking SSH, very Tor Exit friendly on VPS. Unmetered bandwidth.",
         "last_updated": "12/19/2023"
+      },
+      {
+        "name": "Snowcore",
+        "url": "https://snowcore.io/",
+        "asn": "AS215450",
+        "bridge": "Yes",
+        "relay": "Yes",
+        "exit": "Yes",
+        "comment": "Support states that all kinds of Tor nodes are allowed as long as they comply with their [fair-use policy](https://snowcore.io/legal/fair-use). They ask to notify them before running an exit node.",
+        "last_updated": "05/16/2024"
       }
     ]
   }
