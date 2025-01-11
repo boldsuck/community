@@ -1,0 +1,7 @@
+_model: redirect
+---
+target: https://onionservices.torproject.org
+---
+external: true
+---
+_discoverable: no
